@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ตารางข้อมูลของฉัน</title>
+    <style>
+        /* ตั้งค่าฟอนต์และการจัดวางหน้าเว็บ */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        /* กล่องสไตล์สำหรับตาราง */
+        .table-container {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: white;
+            width: 80%;
+            max-width: 800px;
+        }
+
+        /* สไตล์หลักของตาราง */
+        table {
+            width: 100%;
+            border-collapse: collapse; /* ทำให้เส้นขอบรวมกันเป็นเส้นเดียว */
+            text-align: left;
+        }
+
+        /* สไตล์ส่วนหัวตาราง (Header) */
+        th {
+            background-color: #007bff;
+            color: white;
+            padding: 14px 20px;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+        }
+
+        /* สไตล์ส่วนเนื้อหา (Rows) */
+        td {
+            padding: 12px 20px;
+            border-bottom: 1px solid #eeeeee;
+            font-size: 15px;
+        }
+
+        /* ไฮไลท์แถวเว้นแถว (Zebra Striping) เพื่อให้อ่านง่ายขึ้น */
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        /* เอฟเฟกต์เมื่อเอาเมาส์ไปชี้ที่แถว (Hover Effect) */
+        tr:hover {
+            background-color: #f1f3f5;
+            transition: background-color 0.2s ease;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>ลำดับ</th>
+                    <th>ชื่อ-นามสกุล</th>
+                    <th>ตำแหน่ง</th>
+                    <th>สถานะ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>สมชาย ใจดี</td>
+                    <td>Web Developer</td>
+                    <td style="color: #28a745; font-weight: bold;">ใช้งานอยู่</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>สมศรี มีสุข</td>
+                    <td>UX/UI Designer</td>
+                    <td style="color: #28a745; font-weight: bold;">ใช้งานอยู่</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>สมศักดิ์ รักเรียน</td>
+                    <td>Data Analyst</td>
+                    <td style="color: #dc3545; font-weight: bold;">ระงับใช้งาน</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>
