@@ -5,9 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ระบบจัดการข้อมูลพนักงาน</title>
     <style>
-        /* ตั้งค่าฟอนต์และสไตล์พื้นหลัง */
         body {
-            font-family: 'Prompt', 'Segoe UI', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f4f7f6;
             color: #333;
             display: flex;
@@ -18,7 +17,6 @@
             padding: 20px;
         }
 
-        /* กล่องครอบตารางที่ดูทันสมัย */
         .table-card {
             background: #ffffff;
             border-radius: 16px;
@@ -38,7 +36,6 @@
             color: #1a1a1a;
         }
 
-        /* สไตล์ตาราง */
         table {
             width: 100%;
             border-collapse: collapse;
@@ -67,7 +64,6 @@
             background-color: #f8fafc;
         }
 
-        /* ช่อง Input ตอนแก้ไข */
         input[type="text"], select {
             width: 90%;
             padding: 8px 12px;
@@ -83,7 +79,6 @@
             box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
         }
 
-        /* สไตล์ Badge บอกสถานะ */
         .status-badge {
             display: inline-block;
             padding: 6px 12px;
@@ -103,7 +98,6 @@
             color: #b91c1c;
         }
 
-        /* ปุ่มกดต่างๆ */
         .btn {
             padding: 8px 16px;
             border: none;
@@ -127,7 +121,7 @@
         .btn-save {
             background-color: #22c55e;
             color: white;
-            display: none; /* ซ่อนไว้ก่อนจนกว่าจะกดแก้ไข */
+            display: none;
         }
 
         .btn-save:hover {
@@ -173,7 +167,6 @@
                     <button class="btn btn-save" onclick="saveRow('row-1')">บันทึก</button>
                 </td>
             </tr>
-
             <tr id="row-2">
                 <td>
                     <span class="view-mode">สมศรี มีสุข</span>
@@ -195,7 +188,6 @@
                     <button class="btn btn-save" onclick="saveRow('row-2')">บันทึก</button>
                 </td>
             </tr>
-
             <tr id="row-3">
                 <td>
                     <span class="view-mode">สมศักดิ์ รักเรียน</span>
@@ -222,42 +214,31 @@
 </div>
 
 <script>
-    // ฟังก์ชันสำหรับเปิดโหมดแก้ไข
     function toggleEdit(rowId) {
         const row = document.getElementById(rowId);
-        
-        // สลับการแสดงผลระหว่างข้อความปกติ กับ Input ฟอร์ม
         row.querySelectorAll('.view-mode').forEach(el => el.style.display = 'none');
         row.querySelectorAll('.edit-mode').forEach(el => el.style.display = 'block');
-        
-        // สลับปุ่ม แก้ไข -> บันทึก
         row.querySelector('.btn-edit').style.display = 'none';
         row.querySelector('.btn-save').style.display = 'inline-block';
     }
 
-    // ฟังก์ชันสำหรับเซฟข้อมูลที่แก้ไข
     function saveRow(rowId) {
         const row = document.getElementById(rowId);
         const inputs = row.querySelectorAll('input, select');
         const spans = row.querySelectorAll('.view-mode');
 
-        // อัปเดตค่าจาก Input กลับไปที่ตัวอักษรธรรมดา
         spans[0].textContent = inputs[0].value;
         spans[1].textContent = inputs[1].value;
         spans[2].textContent = inputs[2].value;
 
-        // เปลี่ยนสี Badge ตามสถานะที่เลือกใหม่
         if (inputs[2].value === 'ใช้งานอยู่') {
             spans[2].className = 'view-mode status-badge status-active';
         } else {
             spans[2].className = 'view-mode status-badge status-inactive';
         }
 
-        // สลับหน้าจอกลับมาเป็นโหมดดูปกติ
         row.querySelectorAll('.view-mode').forEach(el => el.style.display = 'inline-block');
         row.querySelectorAll('.edit-mode').forEach(el => el.style.display = 'none');
-
-        // สลับปุ่ม บันทึก -> แก้ไข
         row.querySelector('.btn-edit').style.display = 'inline-block';
         row.querySelector('.btn-save').style.display = 'none';
     }
